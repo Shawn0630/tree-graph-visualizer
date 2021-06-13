@@ -19,6 +19,8 @@
             "@src/*": ["src/*"],
             "@images/*": ["src/images/*"],
             "@styles/*": ["src/styles/*"],
+            "@models/*": ["src/models/*"],
+            "@reducers/*": ["src/reducers/*"],
             "@components/*": ["src/components/*"]
         },
         "allowSyntheticDefaultImports": true,

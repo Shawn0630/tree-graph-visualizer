@@ -6,7 +6,19 @@ import '@styles/styles.scss';
 
 import React from 'react';
 import ReactDom from 'react-dom';
+import * as ReactRedux from 'react-redux';
+import * as Redux from 'redux';
+
+import {rootReducer} from '@src/reducers';
 
 import {App} from '@components/app/app';
+import Root from '@components/Root';
 
-ReactDom.render(<App />, document.getElementById('root'));
+const store: Redux.Store<unknown> = Redux.createStore(rootReducer);
+
+ReactDom.render(
+    <ReactRedux.Provider store={store}>
+        <Root />
+    </ReactRedux.Provider>,
+    document.getElementById('root'),
+);
