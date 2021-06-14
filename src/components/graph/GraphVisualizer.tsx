@@ -45,6 +45,7 @@ export default function GraphVisualizer(
             const svg = d3.select(container.current);
             simulatePositions();
             drawTicks();
+            addZoomCapabilities();
         }
     });
 
@@ -116,6 +117,42 @@ export default function GraphVisualizer(
         }
     };
 
+    function addZoomCapabilities(): void {
+        const container = d3.select('.container');
+        const zoom = d3
+            .zoom()
+            .scaleExtent([1, 8])
+            .translateExtent([
+                [100, 100],
+                [300, 300],
+            ])
+            .extent([
+                [100, 100],
+                [200, 200],
+            ])
+            .on('zoom', (event) => {
+                let {x, y, k} = event.transform;
+                x = 0;
+                y = 0;
+                k *= 1;
+                container
+                    .attr('transform', `translate(${x}, ${y})scale(${k})`)
+                    .attr('width', props.width)
+                    .attr('height', props.height);
+            });
+
+        // @ts-ignore
+        container.call(zoom);
+    }
+
+    function restartDrag(): void {
+        if (simulation) simulation.alphaTarget(0.2).restart();
+    }
+
+    function stopDrag(): void {
+        if (simulation) simulation.alphaTarget(0);
+    }
+
     return (
         <svg
             ref={container}
@@ -126,14 +163,13 @@ export default function GraphVisualizer(
                 marginLeft: '0px',
             }}
         >
-            {/* <g>
-                <Links links={props.data.links as link[]} />
-                <Circles nodes={props.data.nodes as node[]} />
-                <Labels nodes={props.data.nodes as node[]} />
-            </g> */}
             <g>
                 <Links links={graphWithDisplayProperty.links as link[]} />
-                <Circles nodes={graphWithDisplayProperty.nodes as node[]} />
+                <Circles
+                    nodes={graphWithDisplayProperty.nodes as node[]}
+                    restartDrag={restartDrag}
+                    stopDrag={stopDrag}
+                />
                 <Labels nodes={graphWithDisplayProperty.nodes as node[]} />
             </g>
         </svg>

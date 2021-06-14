@@ -6,9 +6,10 @@ Component: src/component/SimpleForceGraph/Circle.tsx
 */
 
 import * as d3 from 'd3';
+import {D3DragEvent} from 'd3';
 import * as React from 'react';
 
-import {node} from '@src/models/GraphViewModels';
+import {datum, node} from '@src/models/GraphViewModels';
 
 export default function Circle(props: ICircleProps): JSX.Element {
     let ref: SVGCircleElement | undefined;

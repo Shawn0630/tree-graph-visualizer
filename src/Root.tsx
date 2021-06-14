@@ -23,7 +23,7 @@ function mapDispatchToProps(
     return {};
 }
 
-const graph: Graph = GraphGenerator.generateRandomGraph(10, 10);
+const graph: Graph = GraphGenerator.generateRandomGraph(20, 22);
 class Root extends React.PureComponent<unknown> {
     public render(): JSX.Element {
         return (
@@ -35,7 +35,7 @@ class Root extends React.PureComponent<unknown> {
                         data={graph}
                         linkDistance={80}
                         linkStrength={1}
-                        chargeStrength={-20}
+                        chargeStrength={-200}
                         centerWidth={350}
                         centerHeight={170}
                     />
