@@ -30,7 +30,7 @@ export default function Circles(props: ICirclesProps): JSX.Element {
 
         // @ts-ignore
         function onDragStart(
-            event: d3.D3DragEvent<SVGCircleElement>,
+            event: d3.D3DragEvent<SVGCircleElement, never, never>,
             d: datum,
         ) {
             if (!event.active) {
