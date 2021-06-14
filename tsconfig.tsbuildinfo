@@ -2136,48 +2136,53 @@
         "signature": "ea137305952ae12950844a4ab4b549f18dbf8637bac3e5d05b4a36c4546d77a2",
         "affectsGlobalScope": false
       },
-      "../src/models/GraphView.ts": {
-        "version": "679adc3dc4ffba289497751fb598d09c36f6bfad094266f6c9b61753933c8cbd",
-        "signature": "021b60804bb06c6cc5b4f67b8f13106f8f28dd94674e6c79cdafd4885b9595d5",
+      "../src/models/GraphViewModels.ts": {
+        "version": "2861accd90a4a3f6a5de1deef1ed475eb3b111673d631769c50cc9830073695c",
+        "signature": "d7f23ba2eb27c9d1cf3f3e2a6a2bf61d1571f44cf4b17c17d222f8e0ab14db75",
+        "affectsGlobalScope": false
+      },
+      "../src/utilities/GraphHelpers.ts": {
+        "version": "7fdae71416fba48b7464c753c65694a2de80237d0b369d08f82feccce48e40dc",
+        "signature": "250912755b3472392b160916b52fa0876816a4f723c943497fa1fb4f4b5048db",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Circle.tsx": {
-        "version": "7ff04dfbda73ab712e77f43e49e7948be487b752599d8879b597d752a1486195",
-        "signature": "c26dd0e57258744bcae41a5708151c630e5d840be4ad7e0cefda2671c271e48f",
+        "version": "6222ce1320b5f5482841c849567626ce578ec537bdeff96651e1a46b4b0c6289",
+        "signature": "c16febb7147d849eeee6a730bf703676b4f7fc78aa5114f80d9e2fd6fe15c4aa",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Circles.tsx": {
-        "version": "0f32a9b048fe749a28a8dfc5fda7bfbec6ff45d08ef12a6f24c7998e8d48454c",
-        "signature": "7e8217e931ca3ba8061ccf23f56ac0411bbf8e7586601e15420a4c9d873e3e93",
+        "version": "ef0556a98df3186ebf13d12afab6c15640759a6f559fb2423f6d80ff460b2cd4",
+        "signature": "bb015cebf38b1584df145c4b67d094e47dce6c5ec0d89a329ab1e3a09f2b5155",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Label.tsx": {
-        "version": "a32059e231fa100baf481f2e157f890cb066874addd3d103444bb5acbcb501a6",
-        "signature": "b6792f8276abd65e6d3cc9e2987ab1d50193a97572734a42941f9143f09f7462",
+        "version": "1ab823e03f3f065458c73156599243610a17920ed7810f3ec27ed240e2d7e580",
+        "signature": "ad136d17403721bd5b1cdebc7a6e42f29c11a6198865374f8c03d3461b77d418",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Labels.tsx": {
-        "version": "19d529f4cd7a17be44b073e3e380884fbb79a10ef2559755e0c134e6250cbfd6",
-        "signature": "838677cd8dfaaa07488ba82fdb8953c0559d35a4f05a8c6d8bdb5011a211b4f7",
+        "version": "7dcae028570a53ae6b55de60a7cb401ee6816bcd8a87f4fa5efee87cb5cdd594",
+        "signature": "d4bf61fc390d1765da35b235c7ed72e0855cc8b0406d7c193805b55ff8ce544b",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Link.tsx": {
-        "version": "392fdd1860f6a2a2257f81c97f8e2fc5ad247eec4e57d59748a3e8215a901496",
-        "signature": "d131acb380a7a668e6494dbfe65741e1405f89ba5fe385c22dcedb357a73ab11",
+        "version": "d9f42497185cca7ab0a1bab53827725bdf3ab58cccaa71bec965254a8b6e7a9c",
+        "signature": "c60a44f0f70762dfb428a99e738a5a386407806bc04f0ca6684fb52f493dc84c",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Links.tsx": {
-        "version": "16f94e1a66a30307e2a8c1ae9fd4db6d7a27ae1e532111399c86dfbaf92d2c67",
-        "signature": "0b4f321f3beaed4608d261a2324e22f63b15266786cc041bfdfffe4a7c796b9f",
+        "version": "6f6bdf9f0adbdb52b90049b961d7c09b36f7fea97f92f443a05f8ec62d49bb6b",
+        "signature": "cb1b86e89c4eaaff00f60dcbea1ed58722319615a509c93088d3012be4fdf7e7",
         "affectsGlobalScope": false
       },
       "../src/components/graph/GraphVisualizer.tsx": {
-        "version": "a4d4662e644eb2dd7420510a7bd92b9785dbfa1ddbe65f780484d35b3770a8db",
-        "signature": "9f109e0a6190e54cf99338b945686e3195713f8db5a32843db84dfee5b6d5e54",
+        "version": "8a797b71752a3b68f86cab85b68f2d530f827f0770d49fb130fb66f6efb6b7eb",
+        "signature": "a3a7ea01c878246c5cd74f9b5d1ba980a68b5ade69988283a0ca85e71c5c84ea",
         "affectsGlobalScope": false
       },
       "../src/Root.tsx": {
-        "version": "92b970a864f9d837d7030cfe37c035a928950311fb351994b88d7d6c65f1bdf7",
+        "version": "2e2f215b1baf6960bae1ab167e470c9d39bcef3817a1cc75000fee0c7c20363a",
         "signature": "d96bcaa5d0c4b4cae6feb1942efbe4a6b02862631b525a8fb7cb428242e4fb11",
         "affectsGlobalScope": false
       },
@@ -2200,6 +2205,11 @@
         "version": "6ca0e1a20606bb34ca3e4961e1359e00f69a5ed4ab9cce9fc0ec390e183c8a8b",
         "signature": "6ca0e1a20606bb34ca3e4961e1359e00f69a5ed4ab9cce9fc0ec390e183c8a8b",
         "affectsGlobalScope": true
+      },
+      "../src/models/States.ts": {
+        "version": "1eee34a0bab2a3f1ee3819a9b23bfc5ecc14dff3229fff5e6846a925f3fe51d5",
+        "signature": "1edfa28a15db923b3adf712a04f3c5d0aa40cab86f748fe1d5059d75f5da2d94",
+        "affectsGlobalScope": false
       },
       "../node_modules/@types/eslint/helpers.d.ts": {
         "version": "64d4b35c5456adf258d2cf56c341e203a073253f229ef3208fc0d5020253b241",
@@ -4718,7 +4728,8 @@
         "../src/Themes.ts",
         "../src/components/app/app.tsx",
         "../src/components/graph/GraphVisualizer.tsx",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts",
+        "../src/utilities/GraphHelpers.ts"
       ],
       "../src/Themes.ts": [
         "../node_modules/@material-ui/core/styles/index.d.ts"
@@ -4736,12 +4747,13 @@
       "../src/components/graph/Circle.tsx": [
         "../node_modules/@types/d3/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Circles.tsx": [
+        "../node_modules/@types/d3/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
         "../src/components/graph/Circle.tsx",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/GraphVisualizer.tsx": [
         "../node_modules/@types/d3/index.d.ts",
@@ -4750,27 +4762,28 @@
         "../src/components/graph/Circles.tsx",
         "../src/components/graph/Labels.tsx",
         "../src/components/graph/Links.tsx",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts",
+        "../src/utilities/GraphHelpers.ts"
       ],
       "../src/components/graph/Label.tsx": [
         "../node_modules/@types/d3/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Labels.tsx": [
         "../node_modules/@types/react/index.d.ts",
         "../src/components/graph/Label.tsx",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Link.tsx": [
         "../node_modules/@types/d3/index.d.ts",
         "../node_modules/@types/react/index.d.ts",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Links.tsx": [
         "../node_modules/@types/react/index.d.ts",
         "../src/components/graph/Link.tsx",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/index.tsx": [
         "../node_modules/@types/react-dom/index.d.ts",
@@ -4781,8 +4794,15 @@
         "../src/Root.tsx",
         "../src/reducers/index.ts"
       ],
+      "../src/models/States.ts": [
+        "../src/models/GraphViewModels.ts"
+      ],
       "../src/reducers/index.ts": [
         "../node_modules/redux/index.d.ts"
+      ],
+      "../src/utilities/GraphHelpers.ts": [
+        "../node_modules/@types/d3/index.d.ts",
+        "../src/models/GraphViewModels.ts"
       ]
     },
     "exportedModulesMap": {
@@ -6789,32 +6809,38 @@
         "../node_modules/@types/react/index.d.ts"
       ],
       "../src/components/graph/Circle.tsx": [
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Circles.tsx": [
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/GraphVisualizer.tsx": [
         "../src/@types/declarations.d.ts",
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Label.tsx": [
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Labels.tsx": [
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Link.tsx": [
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/components/graph/Links.tsx": [
-        "../src/models/GraphView.ts"
+        "../src/models/GraphViewModels.ts"
       ],
       "../src/index.tsx": [
         "../src/@types/declarations.d.ts"
       ],
+      "../src/models/States.ts": [
+        "../src/models/GraphViewModels.ts"
+      ],
       "../src/reducers/index.ts": [
         "../node_modules/redux/index.d.ts"
+      ],
+      "../src/utilities/GraphHelpers.ts": [
+        "../src/models/GraphViewModels.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -7349,8 +7375,10 @@
       "../src/components/graph/Link.tsx",
       "../src/components/graph/Links.tsx",
       "../src/index.tsx",
-      "../src/models/GraphView.ts",
-      "../src/reducers/index.ts"
+      "../src/models/GraphViewModels.ts",
+      "../src/models/States.ts",
+      "../src/reducers/index.ts",
+      "../src/utilities/GraphHelpers.ts"
     ]
   },
   "version": "4.0.7"
