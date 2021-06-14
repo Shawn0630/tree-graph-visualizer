@@ -10,9 +10,7 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 
 import {rootReducer} from '@src/reducers';
-
-import {App} from '@components/app/app';
-import Root from '@components/Root';
+import Root from '@src/Root';
 
 const store: Redux.Store<unknown> = Redux.createStore(rootReducer);
 
