@@ -1,12 +1,13 @@
 export type node = {
-    label: string;
+    id: number;
+    label?: string;
     group?: number;
     radiusSize?: number;
     fillColor?: string;
 };
 export type link = {
-    source: string;
-    target: string;
+    source: number;
+    target: number;
     value?: string;
 };
 export type Graph = {

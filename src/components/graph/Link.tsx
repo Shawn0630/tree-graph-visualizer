@@ -8,7 +8,7 @@ Component: src/component/SimpleForceGraph/Node.tsx
 import * as d3 from 'd3';
 import * as React from 'react';
 
-import {link} from '@src/models/GraphView';
+import {link} from '@src/models/GraphViewModels';
 
 export default function Link(props: ILinkProps): JSX.Element {
     let ref: SVGElement | undefined;

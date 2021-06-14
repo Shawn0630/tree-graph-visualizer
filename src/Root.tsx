@@ -10,7 +10,8 @@ import {muiThemeCore} from '@src/Themes';
 import {App} from '@components/app/app';
 
 import GraphVisualizer from './components/graph/GraphVisualizer';
-import {Graph} from './models/GraphView';
+import {Graph} from './models/GraphViewModels';
+import {GraphGenerator} from './utilities/GraphHelpers';
 
 function mapStateToProps(state: unknown, ownProps: unknown): unknown {
     return {};
@@ -22,30 +23,7 @@ function mapDispatchToProps(
     return {};
 }
 
-const graph: Graph = {
-    nodes: [
-        {
-            label: 'a',
-        },
-        {
-            label: 'b',
-        },
-        {
-            label: 'c',
-        },
-    ],
-    links: [
-        {
-            source: 'a',
-            target: 'b',
-        },
-        {
-            source: 'a',
-            target: 'c',
-        },
-    ],
-};
-
+const graph: Graph = GraphGenerator.generateRandomGraph(10, 10);
 class Root extends React.PureComponent<unknown> {
     public render(): JSX.Element {
         return (

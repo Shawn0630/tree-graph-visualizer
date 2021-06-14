@@ -4,7 +4,8 @@ import './GraphVisualizer.scss';
 import * as d3 from 'd3';
 import * as React from 'react';
 
-import {Graph, link, node, point} from '@src/models/GraphView';
+import {Graph, link, node, point} from '@src/models/GraphViewModels';
+import {GraphViewPropertyHelper} from '@src/utilities/GraphHelpers';
 
 import Circles from './Circles';
 import Labels from './Labels';
@@ -31,6 +32,9 @@ export default function GraphVisualizer(
     passes. In this case it will hold our component's SVG DOM element. It's
     initialized null and React will assign it later (see the return statement) */
     const container = React.useRef(null);
+    const graphWithDisplayProperty: Graph = GraphViewPropertyHelper.setGraphViewProperty(
+        props.data,
+    );
     let simulation:
         | d3.Simulation<d3.SimulationNodeDatum, undefined>
         | undefined;
@@ -47,13 +51,13 @@ export default function GraphVisualizer(
     const simulatePositions = (): void => {
         simulation = d3
             .forceSimulation()
-            .nodes(props.data.nodes as d3.SimulationNodeDatum[])
+            .nodes(graphWithDisplayProperty.nodes as d3.SimulationNodeDatum[])
             .force(
                 'link',
                 d3
                     .forceLink()
                     .id((d) => {
-                        return (d as node).label;
+                        return (d as node).id;
                     })
                     .distance(props.linkDistance)
                     .strength(props.linkStrength),
@@ -65,7 +69,7 @@ export default function GraphVisualizer(
             );
 
         // @ts-ignore
-        simulation.force('link').links(props.data.links);
+        simulation.force('link').links(graphWithDisplayProperty.links);
     };
 
     const drawTicks = (): void => {
@@ -75,7 +79,9 @@ export default function GraphVisualizer(
 
         if (simulation) {
             simulation
-                .nodes(props.data.nodes as d3.SimulationNodeDatum[])
+                .nodes(
+                    graphWithDisplayProperty.nodes as d3.SimulationNodeDatum[],
+                )
                 .on('tick', onTickHandler);
         }
 
@@ -120,10 +126,15 @@ export default function GraphVisualizer(
                 marginLeft: '0px',
             }}
         >
-            <g>
+            {/* <g>
                 <Links links={props.data.links as link[]} />
                 <Circles nodes={props.data.nodes as node[]} />
                 <Labels nodes={props.data.nodes as node[]} />
+            </g> */}
+            <g>
+                <Links links={graphWithDisplayProperty.links as link[]} />
+                <Circles nodes={graphWithDisplayProperty.nodes as node[]} />
+                <Labels nodes={graphWithDisplayProperty.nodes as node[]} />
             </g>
         </svg>
     );
