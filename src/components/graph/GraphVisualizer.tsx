@@ -4,8 +4,8 @@ import './GraphVisualizer.scss';
 import * as d3 from 'd3';
 import * as React from 'react';
 
-import {Graph, link, node, point} from '@src/models/GraphViewModels';
-import {GraphViewPropertyHelper} from '@src/utilities/GraphHelpers';
+import {Graph, link, node, point} from '~src/models/GraphViewModels';
+import {GraphViewPropertyHelper} from '~src/utilities/GraphHelpers';
 
 import Circles from './Circles';
 import Labels from './Labels';
@@ -153,6 +153,44 @@ export default function GraphVisualizer(
         if (simulation) simulation.alphaTarget(0);
     }
 
+    const focus = (id: number) => {
+        const nodes = d3.selectAll('.node');
+        const links = d3.selectAll('.link');
+        const labels = d3.selectAll('.label');
+        nodes.style('opacity', function (o) {
+            return GraphViewPropertyHelper.isNeighbour(
+                id,
+                (o as node).id,
+                graphWithDisplayProperty,
+            )
+                ? 1
+                : 0.1;
+        });
+        labels.attr('display', function (o) {
+            return GraphViewPropertyHelper.isNeighbour(
+                id,
+                (o as node).id,
+                graphWithDisplayProperty,
+            )
+                ? 'block'
+                : 'none';
+        });
+        links.style('opacity', function (o) {
+            return (o as link).source == id || (o as link).target == id
+                ? 1
+                : 0.1;
+        });
+    };
+
+    function unfocus() {
+        const nodes = d3.selectAll('.node');
+        const links = d3.selectAll('.link');
+        const labels = d3.selectAll('.label');
+        labels.attr('display', 'block');
+        nodes.style('opacity', 1);
+        nodes.style('opacity', 1);
+    }
+
     return (
         <svg
             ref={container}
@@ -169,6 +207,8 @@ export default function GraphVisualizer(
                     nodes={graphWithDisplayProperty.nodes as node[]}
                     restartDrag={restartDrag}
                     stopDrag={stopDrag}
+                    focus={focus}
+                    unfocus={unfocus}
                 />
                 <Labels nodes={graphWithDisplayProperty.nodes as node[]} />
             </g>

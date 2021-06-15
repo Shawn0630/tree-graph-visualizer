@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-import {Graph, link, node} from '@src/models/GraphViewModels';
+import {Graph, link, node} from '~src/models/GraphViewModels';
 
 namespace GraphGenerator {
     export function generateRandomGraph(node: number, link: number): Graph {
@@ -87,6 +87,19 @@ namespace GraphViewPropertyHelper {
             ...graph,
             nodes: nodes,
         };
+    }
+
+    export function isNeighbour(a: number, b: number, graph: Graph): boolean {
+        for (const link of graph.links) {
+            if (
+                (link.source == a && link.target == b) ||
+                (link.source == b && link.target == a)
+            ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

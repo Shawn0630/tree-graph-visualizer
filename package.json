@@ -17,6 +17,7 @@
     "author": "Andrey Polyakov <andrey@polyakov.im>",
     "main": "webpack.config.babel.js",
     "scripts": {
+        "test": "node_modules/.bin/jest --coverage --coverageDirectory=test_results/coverage",
         "build": "cross-env NODE_ENV=production webpack --config webpack.config.babel.js",
         "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.babel.js > ./dist/profile.json && webpack-bundle-analyzer ./dist/profile.json",
         "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.babel.js",
@@ -62,8 +63,10 @@
         "@teamsupercell/typings-for-css-modules-loader": "~2.4.0",
         "@types/d3": "^6.7.0",
         "@types/d3-force": "^2.1.1",
+        "@types/jest": "^26.0.23",
         "@typescript-eslint/eslint-plugin": "~4.7.0",
         "@typescript-eslint/parser": "~4.7.0",
+        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
         "autoprefixer": "~10.0.1",
         "babel-eslint": "~10.1.0",
         "babel-loader": "~8.2.1",
@@ -73,6 +76,7 @@
         "cross-env": "^7.0.3",
         "css-loader": "~5.0.0",
         "cssnano": "~4.1.10",
+        "enzyme": "^3.11.0",
         "eslint": "~7.13.0",
         "eslint-config-airbnb-base": "~14.2.0",
         "eslint-config-airbnb-typescript": "~12.0.0",
@@ -89,6 +93,8 @@
         "husky": "~4.3.0",
         "import-sort-style-module-and-prefix": "~0.1.3",
         "is-windows": "~1.0.2",
+        "jest": "^27.0.4",
+        "jest-junit": "^12.2.0",
         "less": "~3.12.2",
         "less-loader": "~7.0.2",
         "lint-staged": "~10.5.0",
@@ -108,6 +114,7 @@
         "style-loader": "~2.0.0",
         "svg-url-loader": "~6.0.0",
         "terser-webpack-plugin": "~5.0.1",
+        "ts-jest": "^27.0.3",
         "ts-loader": "~8.0.7",
         "typescript": "~4.0.3",
         "url-loader": "~4.1.1",
@@ -126,5 +133,52 @@
             "style": "module-and-prefix",
             "parser": "babylon"
         }
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "setupFiles": [
+            "<rootDir>/jest/shim.js",
+            "<rootDir>/jest/setupTests.js"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json"
+        ],
+        "transform": {
+            "^.+\\.(ts|tsx)$": "<rootDir>/jest/preprocessor.js"
+        },
+        "testMatch": [
+            "**/__tests__/**/*.(ts|tsx|js)"
+        ],
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+            "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+            "~(.*)$": "<rootDir>/src/$1"
+        },
+        "testResultsProcessor": "jest-junit",
+        "coverageReporters": [
+            "lcov",
+            "text",
+            "cobertura"
+        ],
+        "collectCoverage": false,
+        "collectCoverageFrom": [
+            "**/src/**/*.{ts,tsx,js,jsx}",
+            "!**/node_modules/**",
+            "!**/debug/**",
+            "!**/src/**/*.d.ts"
+        ]
+    },
+    "jest-junit": {
+        "suiteName": "jest tests",
+        "classNameTemplate": "{classname} - {title}",
+        "titleTemplate": "{classname} - {title}",
+        "ancestorSeparator": " > ",
+        "usePathForSuiteName": "true",
+        "output": "test_results/jest.xml"
     }
 }

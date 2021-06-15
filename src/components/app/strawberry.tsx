@@ -3,7 +3,7 @@
  */
 import React, {CSSProperties} from 'react';
 
-import StrawberryIcon from '@images/strawberry.component.svg';
+import StrawberryIcon from '~images/strawberry.component.svg';
 
 export default ({
     style,

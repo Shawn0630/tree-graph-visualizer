@@ -7,7 +7,7 @@ Component: src/component/SimpleForceGraph/Links.tsx
 
 import * as React from 'react';
 
-import {link} from '@src/models/GraphViewModels';
+import {link} from '~src/models/GraphViewModels';
 
 import Link from './Link';
 

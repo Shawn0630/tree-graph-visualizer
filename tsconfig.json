@@ -16,18 +16,20 @@
         "rootDir": "./",
         "typeRoots": ["./node_modules/@types", "./src/@types"],
         "paths": {
-            "@src/*": ["src/*"],
-            "@images/*": ["src/images/*"],
-            "@styles/*": ["src/styles/*"],
-            "@models/*": ["src/models/*"],
-            "@reducers/*": ["src/reducers/*"],
-            "@components/*": ["src/components/*"]
+            "~src/*": ["src/*"],
+            "~images/*": ["src/images/*"],
+            "~styles/*": ["src/styles/*"],
+            "~models/*": ["src/models/*"],
+            "~reducers/*": ["src/reducers/*"],
+            "~utilities/*": ["src/utilities/*"],
+            "~components/*": ["src/components/*"]
         },
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "importsNotUsedAsValues": "preserve",
-        "incremental": true
+        "incremental": true,
+        "resolveJsonModule": true
     },
-    "include": ["src"],
+    "include": ["src/**/*", "__tests__/**/*"],
     "exclude": ["**/node_modules", "**/.*/"]
 }

@@ -5,9 +5,9 @@ import * as ReactRedux from 'react-redux';
 import * as Redux from 'redux';
 import {ThunkDispatch} from 'redux-thunk';
 
-import {muiThemeCore} from '@src/Themes';
+import {muiThemeCore} from '~src/Themes';
 
-import {App} from '@components/app/app';
+import {App} from '~components/app/app';
 
 import GraphVisualizer from './components/graph/GraphVisualizer';
 import {Graph} from './models/GraphViewModels';

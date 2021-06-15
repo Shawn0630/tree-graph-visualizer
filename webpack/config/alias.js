@@ -7,10 +7,11 @@ import {join} from 'path';
 import {rootDir} from '../utils/env';
 
 export const aliasItems = {
-    '@src': join(rootDir, '/src'),
-    '@images': join(rootDir, '/src/images'),
-    '@styles': join(rootDir, '/src/styles'),
-    '@reducers': join(rootDir, '/src/reducers'),
-    '@models': join(rootDir, 'src/models'),
-    '@components': join(rootDir, '/src/components'),
+    '~src': join(rootDir, '/src'),
+    '~images': join(rootDir, '/src/images'),
+    '~styles': join(rootDir, '/src/styles'),
+    '~reducers': join(rootDir, '/src/reducers'),
+    '~models': join(rootDir, 'src/models'),
+    '~utilities': join(rootDir, 'src/utilities'),
+    '~components': join(rootDir, '/src/components'),
 };
