@@ -149,8 +149,11 @@
             "json"
         ],
         "transform": {
-            "^.+\\.(ts|tsx)$": "<rootDir>/jest/preprocessor.js"
+            "^.+\\.(js|jsx|ts|tsx)$": "ts-jest"
         },
+        "transformIgnorePatterns": [
+            "node_modules/?!(d3)"
+        ],
         "testMatch": [
             "**/__tests__/**/*.(ts|tsx|js)"
         ],

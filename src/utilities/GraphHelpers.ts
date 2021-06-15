@@ -1,6 +1,5 @@
+import {Graph, link, node} from '~models/GraphViewModels';
 import * as d3 from 'd3';
-
-import {Graph, link, node} from '~src/models/GraphViewModels';
 
 namespace GraphGenerator {
     export function generateRandomGraph(node: number, link: number): Graph {

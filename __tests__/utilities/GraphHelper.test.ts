@@ -1,5 +1,6 @@
-// import {GraphViewPropertyHelper} from "~utilities/GraphHelpers";
-import {GraphViewPropertyHelper} from '../../src/utilities/GraphHelpers';
+import {GraphViewPropertyHelper} from '~utilities/GraphHelpers';
+
+// import {GraphViewPropertyHelper} from '../../src/utilities/GraphHelpers';
 import no_dege from '../test_data/no_edge.json';
 
 describe('test isNeighbour', () => {

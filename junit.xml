@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="0" failures="0" errors="0" time="2.34">
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="14.245">
+  <testsuite name="__tests__/utilities/GraphHelper.test.ts" errors="0" failures="0" skipped="0" timestamp="2021-06-15T07:25:38" time="2.723" tests="1">
+    <testcase classname="test isNeighbour - should return false when 1 and 2 are used" name="test isNeighbour - should return false when 1 and 2 are used" time="0.003">
+    </testcase>
+  </testsuite>
 </testsuites>
