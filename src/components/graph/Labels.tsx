@@ -13,7 +13,7 @@ import Label from './Label';
 
 export default function Labels(props: ILabelsProps): JSX.Element {
     const labels = props.nodes.map((node: node) => {
-        return node.id == null ? null : (
+        return node.label == null ? null : (
             <Label key={`label-${node.label}`} node={node} />
         );
     });
