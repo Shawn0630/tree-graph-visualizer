@@ -2157,12 +2157,12 @@
         "affectsGlobalScope": false
       },
       "../src/components/graph/Label.tsx": {
-        "version": "5debbac69ca821495833933345591274dde767bde3af7407afc799bf597ca62c",
+        "version": "c6ce49bd504bc63fe951892166c6a8fef8de0467b48957c34b6c6be3911d1c5e",
         "signature": "544e130c2d0a2e1d24c8c57c0887c4ba35a7165a25a5b99b28285d615b058b70",
         "affectsGlobalScope": false
       },
       "../src/components/graph/Labels.tsx": {
-        "version": "2bcdaa1baeda9e9420bd179ec75fb82f7933adcab60c6ccc41c2070a3b48a6fc",
+        "version": "066a3204a965dc750143b5e070e65f6e003b0ecf26fef6877f4886e140523bbc",
         "signature": "3bfd06cc6cfbf947dc2c3cda91cf75fb2bd499ffcb1b6ce8c07d5d77894d7fcb",
         "affectsGlobalScope": false
       },
