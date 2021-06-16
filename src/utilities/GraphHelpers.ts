@@ -89,6 +89,7 @@ namespace GraphViewPropertyHelper {
     }
 
     export function isNeighbour(a: number, b: number, graph: Graph): boolean {
+        if (a == b) return true;
         for (const link of graph.links) {
             if (
                 (link.source == a && link.target == b) ||

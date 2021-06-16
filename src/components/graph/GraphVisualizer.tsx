@@ -4,7 +4,13 @@ import './GraphVisualizer.scss';
 import * as d3 from 'd3';
 import * as React from 'react';
 
-import {Graph, link, node, point} from '~src/models/GraphViewModels';
+import {
+    Graph,
+    extendedLink,
+    link,
+    node,
+    point,
+} from '~src/models/GraphViewModels';
 import {GraphViewPropertyHelper} from '~src/utilities/GraphHelpers';
 
 import Circles from './Circles';
@@ -32,6 +38,7 @@ export default function GraphVisualizer(
     passes. In this case it will hold our component's SVG DOM element. It's
     initialized null and React will assign it later (see the return statement) */
     const container = React.useRef(null);
+    const clonedGraph: Graph = JSON.parse(JSON.stringify(props.data));
     const graphWithDisplayProperty: Graph = GraphViewPropertyHelper.setGraphViewProperty(
         props.data,
     );
@@ -161,7 +168,7 @@ export default function GraphVisualizer(
             return GraphViewPropertyHelper.isNeighbour(
                 id,
                 (o as node).id,
-                graphWithDisplayProperty,
+                clonedGraph,
             )
                 ? 1
                 : 0.1;
@@ -170,13 +177,14 @@ export default function GraphVisualizer(
             return GraphViewPropertyHelper.isNeighbour(
                 id,
                 (o as node).id,
-                graphWithDisplayProperty,
+                clonedGraph,
             )
                 ? 'block'
                 : 'none';
         });
         links.style('opacity', function (o) {
-            return (o as link).source == id || (o as link).target == id
+            return (o as extendedLink).source.id == id ||
+                (o as extendedLink).target.id == id
                 ? 1
                 : 0.1;
         });
@@ -188,7 +196,7 @@ export default function GraphVisualizer(
         const labels = d3.selectAll('.label');
         labels.attr('display', 'block');
         nodes.style('opacity', 1);
-        nodes.style('opacity', 1);
+        links.style('opacity', 1);
     }
 
     return (

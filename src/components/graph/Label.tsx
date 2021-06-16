@@ -25,7 +25,7 @@ export default function Label(props: ILabelProps): JSX.Element {
             // eslint-disable-next-line no-return-assign
             ref={(reference: SVGTextElement) => (ref = reference)}
         >
-            {props.node.label}
+            {props.node.id}
         </text>
     );
 }

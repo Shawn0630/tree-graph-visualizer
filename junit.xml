@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="14.245">
-  <testsuite name="__tests__/utilities/GraphHelper.test.ts" errors="0" failures="0" skipped="0" timestamp="2021-06-15T07:25:38" time="2.723" tests="1">
-    <testcase classname="test isNeighbour - should return false when 1 and 2 are used" name="test isNeighbour - should return false when 1 and 2 are used" time="0.003">
+<testsuites name="jest tests" tests="13" failures="0" errors="0" time="23.096">
+  <testsuite name="__tests__/utilities/GraphHelper.test.ts" errors="0" failures="0" skipped="0" timestamp="2021-06-16T04:35:04" time="5.123" tests="13">
+    <testcase classname="test isNeighbour - should return false when calling isNeighbour(1, 2) to no_node graph" name="test isNeighbour - should return false when calling isNeighbour(1, 2) to no_node graph" time="0.003">
+    </testcase>
+    <testcase classname="test isNeighbour - should return false when calling isNeighbour(1, 2) to no_edge graph" name="test isNeighbour - should return false when calling isNeighbour(1, 2) to no_edge graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(1, 1) to as_link graph" name="test isNeighbour - should return true when calling isNeighbour(1, 1) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(1, 2) to as_link graph" name="test isNeighbour - should return true when calling isNeighbour(1, 2) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(2, 1) to as_link graph" name="test isNeighbour - should return true when calling isNeighbour(2, 1) to as_link graph" time="0.001">
+    </testcase>
+    <testcase classname="test isNeighbour - should return false when calling isNeighbour(1, 3) to as_link graph" name="test isNeighbour - should return false when calling isNeighbour(1, 3) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return false when calling isNeighbour(3, 1) to as_link graph" name="test isNeighbour - should return false when calling isNeighbour(3, 1) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(2, 3) to as_link graph" name="test isNeighbour - should return true when calling isNeighbour(2, 3) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(3, 2) to as_link graph" name="test isNeighbour - should return true when calling isNeighbour(3, 2) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return false when calling isNeighbour(1, 4) to as_link graph" name="test isNeighbour - should return false when calling isNeighbour(1, 4) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return false when calling isNeighbour(4, 1) to as_link graph" name="test isNeighbour - should return false when calling isNeighbour(4, 1) to as_link graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(1, 19) to with_loop graph" name="test isNeighbour - should return true when calling isNeighbour(1, 19) to with_loop graph" time="0">
+    </testcase>
+    <testcase classname="test isNeighbour - should return true when calling isNeighbour(19, 1) to with_loop graph" name="test isNeighbour - should return true when calling isNeighbour(19, 1) to with_loop graph" time="0">
     </testcase>
   </testsuite>
 </testsuites>
