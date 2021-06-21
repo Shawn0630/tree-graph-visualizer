@@ -14,7 +14,9 @@ import Circle from './Circle';
 
 export default function Circles(props: ICirclesProps): JSX.Element {
     React.useEffect(() => {
-        setMouseEventsListeners();
+        if (props.allowDragNDrop) {
+            setMouseEventsListeners();
+        }
     });
 
     function setMouseEventsListeners(): void {
@@ -35,43 +37,49 @@ export default function Circles(props: ICirclesProps): JSX.Element {
             event: d3.D3DragEvent<SVGCircleElement, never, never>,
             d: datum,
         ) {
-            if (!event.active) {
-                props.restartDrag();
+            if (props.allowDragNDrop) {
+                if (!event.active && props.restartDrag) {
+                    props.restartDrag();
+                }
+                // eslint-disable-next-line no-param-reassign
+                d.fx = d.x;
+                // eslint-disable-next-line no-param-reassign
+                d.fy = d.y;
             }
-            // eslint-disable-next-line no-param-reassign
-            d.fx = d.x;
-            // eslint-disable-next-line no-param-reassign
-            d.fy = d.y;
         }
 
         function onDrag(
             event: d3.D3DragEvent<SVGCircleElement, never, never>,
             d: datum,
         ) {
-            // eslint-disable-next-line no-param-reassign
-            d.fx = event.x;
-            // eslint-disable-next-line no-param-reassign
-            d.fy = event.y;
+            if (props.allowDragNDrop) {
+                // eslint-disable-next-line no-param-reassign
+                d.fx = event.x;
+                // eslint-disable-next-line no-param-reassign
+                d.fy = event.y;
+            }
         }
 
         function onDragEnd(
             event: d3.D3DragEvent<SVGCircleElement, never, never>,
             d: datum,
         ) {
-            if (!event.active) {
-                props.stopDrag();
+            if (props.allowDragNDrop) {
+                if (!event.active && props.stopDrag) {
+                    props.stopDrag();
+                }
+                // eslint-disable-next-line no-param-reassign
+                d.fx = null;
+                // eslint-disable-next-line no-param-reassign
+                d.fy = null;
             }
-            // eslint-disable-next-line no-param-reassign
-            d.fx = null;
-            // eslint-disable-next-line no-param-reassign
-            d.fy = null;
         }
 
         function focus(
             event: d3.D3DragEvent<SVGCircleElement, never, never>,
             d: node,
         ) {
-            if (!event.active) {
+            if (!event.active && props.focus) {
                 props.focus(d.id);
             }
         }
@@ -80,7 +88,7 @@ export default function Circles(props: ICirclesProps): JSX.Element {
             event: d3.D3DragEvent<SVGCircleElement, never, never>,
             d: node,
         ) {
-            if (!event.active) {
+            if (!event.active && props.unfocus) {
                 props.unfocus();
             }
         }
@@ -94,8 +102,9 @@ export default function Circles(props: ICirclesProps): JSX.Element {
 
 interface ICirclesProps {
     nodes: node[];
-    restartDrag: () => void;
-    stopDrag: () => void;
-    focus: (id: number) => void;
-    unfocus: () => void;
+    allowDragNDrop?: boolean;
+    restartDrag?: () => void;
+    stopDrag?: () => void;
+    focus?: (id: number) => void;
+    unfocus?: () => void;
 }

@@ -217,6 +217,7 @@ export default function GraphVisualizer(
                     stopDrag={stopDrag}
                     focus={focus}
                     unfocus={unfocus}
+                    allowDragNDrop
                 />
                 <Labels nodes={graphWithDisplayProperty.nodes as node[]} />
             </g>

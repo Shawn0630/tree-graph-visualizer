@@ -22,7 +22,7 @@ export default function Circle(props: ICircleProps): JSX.Element {
         // eslint-disable-next-line no-return-assign
         <circle
             className="node"
-            r={props.node.radiusSize ? props.node.radiusSize : 3}
+            r={props.node.radiusSize ? props.node.radiusSize : 6}
             fill={
                 (props.node.fillColor as string)
                     ? props.node.fillColor
