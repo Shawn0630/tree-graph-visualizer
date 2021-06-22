@@ -6,6 +6,7 @@ import * as React from 'react';
 
 import {
     Graph,
+    datum,
     extendedLink,
     link,
     node,
@@ -49,10 +50,9 @@ export default function GraphVisualizer(
        for instance inserting elements into the DOM using D3 */
     React.useEffect(() => {
         if (props.data && container.current) {
-            const svg = d3.select(container.current);
             simulatePositions();
             drawTicks();
-            addZoomCapabilities();
+            furtherInterface();
         }
     });
 
@@ -81,9 +81,10 @@ export default function GraphVisualizer(
     };
 
     const drawTicks = (): void => {
-        const nodes = d3.selectAll('.node');
-        const links = d3.selectAll('.link');
-        const labels = d3.selectAll('.label');
+        const svg = d3.select(container.current);
+        const nodes = svg.selectAll('.node');
+        const links = svg.selectAll('.link');
+        const labels = svg.selectAll('.label');
 
         if (simulation) {
             simulation
@@ -124,6 +125,10 @@ export default function GraphVisualizer(
         }
     };
 
+    const furtherInterface = (): void => {
+        addZoomCapabilities();
+        addDragAndDropFocusUnFocus();
+    };
     function addZoomCapabilities(): void {
         const container = d3.select('.container');
         const zoom = d3
@@ -152,51 +157,107 @@ export default function GraphVisualizer(
         container.call(zoom);
     }
 
-    function restartDrag(): void {
-        if (simulation) simulation.alphaTarget(0.2).restart();
-    }
-
-    function stopDrag(): void {
-        if (simulation) simulation.alphaTarget(0);
-    }
-
-    const focus = (id: number) => {
-        const nodes = d3.selectAll('.node');
-        const links = d3.selectAll('.link');
-        const labels = d3.selectAll('.label');
-        nodes.style('opacity', function (o) {
-            return GraphViewPropertyHelper.isNeighbour(
-                id,
-                (o as node).id,
-                clonedGraph,
+    function addDragAndDropFocusUnFocus(): void {
+        const svg = d3.select(container.current);
+        svg.selectAll('.node')
+            // @ts-ignore
+            .call(
+                d3
+                    .drag<SVGCircleElement, datum>()
+                    .on('start', onDragStart)
+                    .on('drag', onDrag)
+                    .on('end', onDragEnd),
             )
-                ? 1
-                : 0.1;
-        });
-        labels.attr('display', function (o) {
-            return GraphViewPropertyHelper.isNeighbour(
-                id,
-                (o as node).id,
-                clonedGraph,
-            )
-                ? 'block'
-                : 'none';
-        });
-        links.style('opacity', function (o) {
-            return (o as extendedLink).source.id == id ||
-                (o as extendedLink).target.id == id
-                ? 1
-                : 0.1;
-        });
-    };
+            .on('mouseover', focus)
+            .on('mouseout', unfocus);
 
-    function unfocus() {
-        const nodes = d3.selectAll('.node');
-        const links = d3.selectAll('.link');
-        const labels = d3.selectAll('.label');
-        labels.attr('display', 'block');
-        nodes.style('opacity', 1);
-        links.style('opacity', 1);
+        // @ts-ignore
+        function onDragStart(
+            event: d3.D3DragEvent<SVGCircleElement, never, never>,
+            d: datum,
+        ) {
+            if (!event.active) {
+                if (simulation) simulation.alphaTarget(0.2).restart();
+            }
+            // eslint-disable-next-line no-param-reassign
+            d.fx = d.x;
+            // eslint-disable-next-line no-param-reassign
+            d.fy = d.y;
+        }
+
+        function onDrag(
+            event: d3.D3DragEvent<SVGCircleElement, never, never>,
+            d: datum,
+        ) {
+            // eslint-disable-next-line no-param-reassign
+            d.fx = event.x;
+            // eslint-disable-next-line no-param-reassign
+            d.fy = event.y;
+        }
+
+        function onDragEnd(
+            event: d3.D3DragEvent<SVGCircleElement, never, never>,
+            d: datum,
+        ) {
+            if (!event.active) {
+                if (simulation) simulation.alphaTarget(0);
+            }
+            // eslint-disable-next-line no-param-reassign
+            d.fx = null;
+            // eslint-disable-next-line no-param-reassign
+            d.fy = null;
+        }
+
+        function focus(
+            event: d3.D3DragEvent<SVGCircleElement, never, never>,
+            d: node,
+        ) {
+            if (!event.active) {
+                const svg = d3.select(container.current);
+                const nodes = svg.selectAll('.node');
+                const links = svg.selectAll('.link');
+                const labels = svg.selectAll('.label');
+                nodes.style('opacity', function (o) {
+                    return GraphViewPropertyHelper.isNeighbour(
+                        d.id,
+                        (o as node).id,
+                        clonedGraph,
+                    )
+                        ? 1
+                        : 0.1;
+                });
+                labels.attr('display', function (o) {
+                    return GraphViewPropertyHelper.isNeighbour(
+                        d.id,
+                        (o as node).id,
+                        clonedGraph,
+                    )
+                        ? 'block'
+                        : 'none';
+                });
+                links.style('opacity', function (o) {
+                    return (o as extendedLink).source.id == d.id ||
+                        (o as extendedLink).target.id == d.id
+                        ? 1
+                        : 0.1;
+                });
+            }
+        }
+
+        function unfocus(
+            event: d3.D3DragEvent<SVGCircleElement, never, never>,
+            d: node,
+        ) {
+            if (!event.active) {
+                const svg = d3.select(container.current);
+                const nodes = svg.selectAll('.node');
+                const links = svg.selectAll('.link');
+                const labels = svg.selectAll('.label');
+                labels.attr('display', 'block');
+                nodes.style('opacity', 1);
+                links.style('opacity', 1);
+            }
+        }
     }
 
     return (
@@ -211,14 +272,7 @@ export default function GraphVisualizer(
         >
             <g>
                 <Links links={graphWithDisplayProperty.links as link[]} />
-                <Circles
-                    nodes={graphWithDisplayProperty.nodes as node[]}
-                    restartDrag={restartDrag}
-                    stopDrag={stopDrag}
-                    focus={focus}
-                    unfocus={unfocus}
-                    allowDragNDrop
-                />
+                <Circles nodes={graphWithDisplayProperty.nodes as node[]} />
                 <Labels nodes={graphWithDisplayProperty.nodes as node[]} />
             </g>
         </svg>

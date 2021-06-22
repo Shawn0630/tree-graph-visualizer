@@ -30,20 +30,20 @@ class Root extends React.PureComponent<unknown> {
         return (
             <Typography component="div">
                 <MuiThemeProviderCore theme={muiThemeCore}>
-                    {/* <GraphVisualizer
+                    <GraphVisualizer
                         width={800}
                         height={350}
-                        data={graph}
+                        data={JSON.parse(JSON.stringify(graph))}
                         linkDistance={80}
                         linkStrength={1}
                         chargeStrength={-200}
                         centerWidth={350}
                         centerHeight={170}
-                    /> */}
+                    />
                     <GraphDrawPad
                         width={800}
                         height={800}
-                        data={graph}
+                        data={JSON.parse(JSON.stringify(graph))}
                         linkDistance={60}
                         linkStrength={1}
                         chargeStrength={-300}

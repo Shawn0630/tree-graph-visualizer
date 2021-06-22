@@ -81,9 +81,10 @@ export default function GraphDrawPad(props: GraphDrawPadProps): JSX.Element {
     };
 
     const drawTicks = (): void => {
-        const nodes = d3.selectAll('.node');
-        const links = d3.selectAll('.link');
-        const labels = d3.selectAll('.label');
+        const svg = d3.select(container.current);
+        const nodes = svg.selectAll('.node');
+        const links = svg.selectAll('.link');
+        const labels = svg.selectAll('.label');
 
         if (simulation) {
             simulation
@@ -127,7 +128,7 @@ export default function GraphDrawPad(props: GraphDrawPadProps): JSX.Element {
         svg.on('mousedown', addNode)
             .on('mousemove', updateDragLine)
             .on('mouseup', hideDragLine);
-        const nodes = d3.selectAll('.node');
+        const nodes = svg.selectAll('.node');
         nodes
             .on('mousedown', beginDragLine)
             .on('mouseup', endDragLine)
@@ -155,7 +156,8 @@ export default function GraphDrawPad(props: GraphDrawPadProps): JSX.Element {
         event.preventDefault();
         if (event.ctrlKey || event.button != 0) return;
         mousedownNode = d;
-        const dragLine = d3.select('.dragLine');
+        const svg = d3.select(container.current);
+        const dragLine = svg.select('.dragLine');
         dragLine
             .classed('hidden', false)
             .attr(
@@ -214,16 +216,18 @@ export default function GraphDrawPad(props: GraphDrawPadProps): JSX.Element {
 
     function updateDragLine(event: MouseEvent, d: datum) {
         if (!mousedownNode) return;
-        const dragLine = d3.select('.dragLine');
+        const svg = d3.select(container.current);
+        const dragLine = svg.select('.dragLine');
         dragLine
             .attr('x1', mousedownNode.x)
             .attr('y1', mousedownNode.y)
-            .attr('x2', event.x)
-            .attr('y2', event.y);
+            .attr('x2', event.offsetX)
+            .attr('y2', event.offsetY);
     }
 
     function hideDragLine() {
-        const dragLine = d3.select('.dragLine');
+        const svg = d3.select(container.current);
+        const dragLine = svg.select('.dragLine');
         dragLine
             .attr('x1', 0)
             .attr('y1', 0)
