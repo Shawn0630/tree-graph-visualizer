@@ -2182,12 +2182,12 @@
         "affectsGlobalScope": false
       },
       "../src/components/graph/GraphVisualizer.tsx": {
-        "version": "dbf53b5ef1a537ecc402520987843baf3b6031239d6d6e284e1940868dda53e5",
+        "version": "3a5f9758c6673e9756c43a5aebddf54206ed86e9f6f2f220b1b6cbed3691e2ed",
         "signature": "d33a4f661bb655045295b32af57a78e8caaa16688dfbbbb9c6aad05390cd97f3",
         "affectsGlobalScope": false
       },
       "../src/Root.tsx": {
-        "version": "9bad62aa565c9de50fca49d4889ea3eb98840b322e4c89fc3b75e42c543c4705",
+        "version": "e64efc1a4ee55ae362a4dc59d898aede4f02f27eb3c9b8485688b48fafca0542",
         "signature": "d96bcaa5d0c4b4cae6feb1942efbe4a6b02862631b525a8fb7cb428242e4fb11",
         "affectsGlobalScope": false
       },
