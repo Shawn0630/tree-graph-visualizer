@@ -29,26 +29,35 @@ function mapDispatchToProps(
 const graph: Graph = GraphGenerator.generateRandomGraph(20, 23);
 const root: TreeNode = {
     id: 1,
+    label: '1',
     children: [
         {
             id: 2,
+            label: '2',
             children: [
                 {
                     id: 4,
+                    label: '4',
                     children: [
                         {
                             id: 5,
+                            label: '5',
                             children: [],
                         },
                         {
                             id: 6,
+                            label: '6',
                             children: [],
                         },
                     ],
                 },
             ],
         },
-        {id: 3, children: []},
+        {
+            id: 3,
+            label: '3',
+            children: [],
+        },
     ],
 };
 class Root extends React.PureComponent<unknown> {

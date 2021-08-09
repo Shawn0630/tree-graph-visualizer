@@ -62,6 +62,14 @@ export default function TreeVisualizer(
 
     React.useEffect(() => {
         if (root && container.current) {
+            const svg = d3.select(container.current);
+            const g = svg.select('.tree');
+            const gLink = g.append('g').attr('class', 'links');
+            const gNode = g
+                .append('g')
+                .attr('class', 'nodes')
+                .attr('cursor', 'pointer')
+                .attr('pointer-events', 'all');
             const rootNode: d3.HierarchyPointNode<TreeNode> = simulatePositions(
                 root,
             );
@@ -73,14 +81,15 @@ export default function TreeVisualizer(
     const drawTree = (selected: d3.HierarchyPointNode<TreeNode>): void => {
         const svg = d3.select(container.current);
         const g = svg.select('.tree');
+        const gLink = g.select('.links');
+        const gNode = g.select('.nodes');
+
         const rootNode: d3.HierarchyPointNode<TreeNode> = simulatePositions(
             root,
         );
+
         // adds each node as a group
-        const nodes = g.selectAll('.node').data(rootNode.descendants());
-        // .enter().append("g")
-        // .attr("class", d => "node" + (d.children ? " node--internal" : " node--leaf"))
-        // .attr("transform", d => "translate(" + d.y + "," + d.x+ ")");
+        const nodes = gNode.selectAll('.node').data(rootNode.descendants());
 
         // Enter any new nodes at the parent's previous position.
         const nodeEnter = nodes
@@ -105,7 +114,9 @@ export default function TreeVisualizer(
                 d.data.radiusSize == null ? 6 : d.data.radiusSize,
             )
             .style('fill', function (d) {
-                return d.data._children ? 'lightsteelblue' : '#fff';
+                return d.data._children && d.data._children.length != 0
+                    ? 'lightsteelblue'
+                    : '#fff';
             });
 
         // adds the text to the node
@@ -137,7 +148,7 @@ export default function TreeVisualizer(
             .select('circle')
             .attr('r', 10)
             .style('fill', function (d) {
-                return d.data._children && !d.data.children
+                return d.data._children && d.data._children.length != 0
                     ? 'lightsteelblue'
                     : '#fff';
             });
@@ -159,7 +170,7 @@ export default function TreeVisualizer(
         nodeExit.select('text').style('fill-opacity', 1e-6);
 
         // adds the links between the nodes
-        const links = g.selectAll('.link').data(rootNode.links());
+        const links = gLink.selectAll('.link').data(rootNode.links());
 
         const linkEnter = links
             .enter()
