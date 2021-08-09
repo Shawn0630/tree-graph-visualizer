@@ -1,14 +1,8 @@
 import * as d3 from 'd3';
 import * as React from 'react';
 
-import {
-    Graph,
-    datum,
-    extendedLink,
-    link,
-    node,
-    point,
-} from '~src/models/GraphViewModels';
+import {Graph, extendedLink, link} from '~src/models/GraphViewModels';
+import {datum, node, point} from '~src/models/ViewModels';
 
 import Circles from './Circles';
 import Labels from './Labels';

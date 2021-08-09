@@ -1,10 +1,5 @@
-export type node = {
-    id: number;
-    label?: string;
-    group?: number;
-    radiusSize?: number;
-    fillColor?: string;
-};
+import {datum, node} from './ViewModels';
+
 export type link = {
     source: number;
     target: number;
@@ -17,14 +12,4 @@ export type extendedLink = {
 export type Graph = {
     nodes: node[];
     links: link[];
-};
-export type point = {
-    x: number;
-    y: number;
-};
-export type datum = {
-    x: number;
-    y: number;
-    fx: number | null;
-    fy: number | null;
 };

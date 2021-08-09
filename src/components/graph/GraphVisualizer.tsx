@@ -1,17 +1,10 @@
-import './GraphVisualizer.scss';
-import './GraphVisualizer.scss';
+import './Graph.scss';
 
 import * as d3 from 'd3';
 import * as React from 'react';
 
-import {
-    Graph,
-    datum,
-    extendedLink,
-    link,
-    node,
-    point,
-} from '~src/models/GraphViewModels';
+import {Graph, extendedLink, link} from '~src/models/GraphViewModels';
+import {datum, node, point} from '~src/models/ViewModels';
 import {GraphViewPropertyHelper} from '~src/utilities/GraphHelpers';
 
 import Circles from './Circles';
@@ -71,10 +64,8 @@ export default function GraphVisualizer(
                     .strength(props.linkStrength),
             )
             .force('charge', d3.forceManyBody().strength(props.chargeStrength))
-            .force(
-                'center',
-                d3.forceCenter(props.centerWidth, props.centerHeight),
-            );
+            .force('x', d3.forceX(props.width / 2))
+            .force('y', d3.forceY(props.height / 2));
 
         // @ts-ignore
         simulation.force('link').links(graphWithDisplayProperty.links);

@@ -1,4 +1,5 @@
-import {Graph, link, node} from '~models/GraphViewModels';
+import {Graph, link} from '~models/GraphViewModels';
+import {node} from '~models/ViewModels';
 import * as d3 from 'd3';
 
 namespace GraphGenerator {

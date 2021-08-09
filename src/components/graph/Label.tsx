@@ -9,7 +9,7 @@ import * as d3 from 'd3';
 import * as React from 'react';
 import {Dispatch, SetStateAction} from 'react';
 
-import {node} from '~src/models/GraphViewModels';
+import {node} from '~src/models/ViewModels';
 
 export default function Label(props: ILabelProps): JSX.Element {
     let ref: SVGTextElement | undefined;

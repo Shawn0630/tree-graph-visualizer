@@ -7,7 +7,7 @@ Component: src/component/SimpleForceGraph/Labels.tsx
 
 import * as React from 'react';
 
-import {node} from '~src/models/GraphViewModels';
+import {node} from '~src/models/ViewModels';
 
 import Label from './Label';
 
