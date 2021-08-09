@@ -18,7 +18,8 @@ interface TreeVisualizerProps {
     centerHeight: number;
 }
 
-// http://qiutianaimeili.com/html/page/2020/09/2034ek3ddhvmcf.html
+// https://blocks.lsecities.net/d3noob/918a64abe4c3682cac3b4c3c852a698d
+// https://observablehq.com/@d3/collapsible-tree
 export default function TreeVisualizer(
     props: TreeVisualizerProps,
 ): JSX.Element {
@@ -65,16 +66,12 @@ export default function TreeVisualizer(
             const svg = d3.select(container.current);
             const g = svg.select('.tree');
             const gLink = g.append('g').attr('class', 'links');
-            const gNode = g
-                .append('g')
-                .attr('class', 'nodes')
-                .attr('cursor', 'pointer')
-                .attr('pointer-events', 'all');
+            const gNode = g.append('g').attr('class', 'nodes');
             const rootNode: d3.HierarchyPointNode<TreeNode> = simulatePositions(
                 root,
             );
             drawTree(rootNode);
-            //furtherInterface();
+            furtherInterface();
         }
     });
 
@@ -90,6 +87,13 @@ export default function TreeVisualizer(
 
         // adds each node as a group
         const nodes = gNode.selectAll('.node').data(rootNode.descendants());
+        rootNode
+            .descendants()
+            .filter((d) => d.data.id == selected.data.id)
+            .map((d) => {
+                selected.x = d.x;
+                selected.y = d.y;
+            });
 
         // Enter any new nodes at the parent's previous position.
         const nodeEnter = nodes
@@ -104,8 +108,7 @@ export default function TreeVisualizer(
                     selected.data._x +
                     ')'
                 );
-            })
-            .on('click', toggleExpandChildren);
+            });
 
         // adds the circle to the node
         nodeEnter
@@ -210,8 +213,12 @@ export default function TreeVisualizer(
 
     const furtherInterface = (): void => {
         const svg = d3.select(container.current);
-        const nodes = svg.selectAll('.node');
-        nodes.on('click', toggleExpandChildren);
+        const gNode = svg.select('.nodes');
+        gNode
+            .selectAll('.node')
+            .attr('cursor', 'pointer')
+            .attr('pointer-events', 'all')
+            .on('click', toggleExpandChildren);
     };
 
     function toggleExpandChildren(
@@ -226,6 +233,7 @@ export default function TreeVisualizer(
             node.data._children = null;
         }
         drawTree(node);
+        furtherInterface();
     }
 
     return (
